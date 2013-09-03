@@ -6,7 +6,7 @@
 #ifndef _STDINT_H_
 #define _STDINT_H_
 
-#if __LP64__
+#if defined(__LP64__) && __LP64__
 #define __WORDSIZE 64
 #else
 #define __WORDSIZE 32

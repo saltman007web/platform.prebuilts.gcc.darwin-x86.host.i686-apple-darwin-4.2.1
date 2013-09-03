@@ -53,6 +53,67 @@ typedef float __m128 __attribute__ ((__vector_size__ (16), __may_alias__));
 /* Internal data types for implementing the intrinsics.  */
 typedef float __v4sf __attribute__ ((__vector_size__ (16)));
 
+#if defined(__clang__) && defined(WITH_SYNTAX_CHECK)
+/* Workaround for "clang -fsyntax-only" happens to use this header, but may
+ * choke on something not supported in clang
+ */
+int __builtin_ia32_cvtss2si (__v4sf);
+int __builtin_ia32_cvttss2si (__v4sf);
+__m128 __builtin_ia32_addps (__v4sf, __v4sf);
+__m128 __builtin_ia32_addss (__v4sf, __v4sf);
+__m128 __builtin_ia32_addss (__v4sf, __v4sf);
+__m128 __builtin_ia32_addss (__v4sf, __v4sf);
+__m128 __builtin_ia32_andnps (__m128, __m128);
+__m128 __builtin_ia32_andps (__m128, __m128);
+__m128 __builtin_ia32_cmpeqps (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpeqss (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpgeps (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpgtps (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpleps (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpless (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpltps (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpltss (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpneqps (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpneqss (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpngeps (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpngtps (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpnleps (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpnless (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpnltps (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpnltss (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpordps (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpordss (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpunordps (__v4sf, __v4sf);
+__m128 __builtin_ia32_cmpunordss (__v4sf, __v4sf);
+__m128 __builtin_ia32_cvtsi2ss (__v4sf, int);
+__m128 __builtin_ia32_divps (__v4sf, __v4sf);
+__m128 __builtin_ia32_divss (__v4sf, __v4sf);
+__m128 __builtin_ia32_movss (__v4sf, __v4sf);
+__m128 __builtin_ia32_mulps (__v4sf, __v4sf);
+__m128 __builtin_ia32_mulps (__v4sf, __v4sf);
+__m128 __builtin_ia32_mulss (__v4sf, __v4sf);
+__m128 __builtin_ia32_mulss (__v4sf, __v4sf);
+__m128 __builtin_ia32_orps (__m128, __m128);
+__m128 __builtin_ia32_subps (__v4sf, __v4sf);
+__m128 __builtin_ia32_subss (__v4sf, __v4sf);
+__m128 __builtin_ia32_subss (__v4sf, __v4sf);
+__m128 __builtin_ia32_xorps (__m128, __m128);
+__m128 __builtin_ia32_loadhps (__v4sf, const __v2si *);
+__m128 __builtin_ia32_loadlps (__v4sf, const __v2si *);
+__m128 __builtin_ia32_movhlps (__v4sf, __v4sf);
+__m128 __builtin_ia32_movlhps (__v4sf, __v4sf);
+__m128 __builtin_ia32_shufps (__v4sf, __v4sf, int const);
+__m128 __builtin_ia32_unpckhps (__v4sf, __v4sf);
+__m128 __builtin_ia32_unpcklps (__v4sf, __v4sf);
+__m128 __builtin_ia32_loadups (float const *);
+__m64 __builtin_ia32_vec_set_v4hi (__v4hi, int const, int const);
+float __builtin_ia32_vec_ext_v4sf (__v4sf, const int);
+int __builtin_ia32_vec_ext_v4hi (__v4hi, const int);
+long long __builtin_ia32_cvtss2si64 (__v4sf);
+long long __builtin_ia32_cvttss2si64 (__v4sf);
+__m128 __builtin_ia32_cvtsi642ss (__v4sf, long long);
+#endif
+
 /* Create a selector for use with the SHUFPS instruction.  */
 #define _MM_SHUFFLE(fp3,fp2,fp1,fp0) \
  (((fp3) << 6) | ((fp2) << 4) | ((fp1) << 2) | (fp0))
