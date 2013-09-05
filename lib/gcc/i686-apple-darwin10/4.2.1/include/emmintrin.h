@@ -46,6 +46,102 @@ typedef char __v16qi __attribute__ ((__vector_size__ (16)));
 typedef long long __m128i __attribute__ ((__vector_size__ (16), __may_alias__));
 typedef double __m128d __attribute__ ((__vector_size__ (16), __may_alias__));
 
+#if defined(__clang__) && defined(WITH_SYNTAX_CHECK)
+/* Workaround for "clang -fsyntax-only" happens to use this header, but may
+ * choke on something not supported in clang
+ */
+__m128d __builtin_ia32_addpd (__v2df, __v2df);
+__m128d __builtin_ia32_addsd (__v2df, __v2df);
+__m128d __builtin_ia32_andnpd (__v2df, __v2df);
+__m128d __builtin_ia32_andpd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpeqpd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpeqsd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpgepd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpgtpd (__v2df, __v2df);
+__m128d __builtin_ia32_cmplepd (__v2df, __v2df);
+__m128d __builtin_ia32_cmplesd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpltpd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpltsd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpneqpd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpneqsd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpngepd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpngtpd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpnlepd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpnlesd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpnltpd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpnltsd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpordpd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpordsd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpunordpd (__v2df, __v2df);
+__m128d __builtin_ia32_cmpunordsd (__v2df, __v2df);
+__m128d __builtin_ia32_cvtsi2sd (__v2df, int);
+__m128d __builtin_ia32_cvtss2sd (__v2df, __v4sf);
+__m128d __builtin_ia32_divpd (__v2df, __v2df);
+__m128d __builtin_ia32_divsd (__v2df, __v2df);
+__m128d __builtin_ia32_loadhpd (__v2df, double const *);
+__m128d __builtin_ia32_loadlpd (__v2df, double const *);
+__m128d __builtin_ia32_movsd (__v2df, __v2df);
+__m128d __builtin_ia32_mulpd (__v2df, __v2df);
+__m128d __builtin_ia32_mulsd (__v2df, __v2df);
+__m128d __builtin_ia32_orpd (__v2df, __v2df);
+__m128d __builtin_ia32_shufpd (__v2df, __v2df, const int);
+__m128d __builtin_ia32_subpd (__v2df, __v2df);
+__m128d __builtin_ia32_subsd (__v2df, __v2df);
+__m128d __builtin_ia32_unpckhpd (__v2df, __v2df);
+__m128d __builtin_ia32_unpcklpd (__v2df, __v2df);
+__m128d __builtin_ia32_xorpd (__v2df, __v2df);
+__m128i  __builtin_ia32_loaddqu (char const *);
+__m128i __builtin_ia32_movq128 (__v2di);
+__m128i __builtin_ia32_paddb128 (__v16qi, __v16qi);
+__m128i __builtin_ia32_paddd128 (__v4si, __v4si);
+__m128i __builtin_ia32_paddq128 (__v2di, __v2di);
+__m128i __builtin_ia32_paddw128 (__v8hi, __v8hi);
+__m128i __builtin_ia32_pand128 (__v2di, __v2di);
+__m128i __builtin_ia32_pandn128 (__v2di, __v2di);
+__m128i __builtin_ia32_pcmpeqb128 (__v16qi, __v16qi);
+__m128i __builtin_ia32_pcmpeqd128 (__v4si, __v4si);
+__m128i __builtin_ia32_pcmpeqw128 (__v8hi, __v8hi);
+__m128i __builtin_ia32_pcmpgtb128 (__v16qi, __v16qi);
+__m128i __builtin_ia32_pcmpgtb128 (__v16qi, __v16qi);
+__m128i __builtin_ia32_pcmpgtd128 (__v4si, __v4si);
+__m128i __builtin_ia32_pcmpgtd128 (__v4si, __v4si);
+__m128i __builtin_ia32_pcmpgtw128 (__v8hi, __v8hi);
+__m128i __builtin_ia32_pcmpgtw128 (__v8hi, __v8hi);
+__m128i __builtin_ia32_pmullw128 (__v8hi, __v8hi);
+__m128i __builtin_ia32_por128 (__v2di, __v2di);
+__m128i __builtin_ia32_pshufd (__v4si, const int);
+__m128i __builtin_ia32_pshufhw (__v8hi, const int);
+__m128i __builtin_ia32_pshuflw (__v8hi, const int);
+__m128i __builtin_ia32_pslldqi128 (__m128i, const int);
+__m128i __builtin_ia32_psrldqi128 (__m128i, const int);
+__m128i __builtin_ia32_psubb128 (__v16qi, __v16qi);
+__m128i __builtin_ia32_psubd128 (__v4si, __v4si);
+__m128i __builtin_ia32_psubq128 (__v2di, __v2di);
+__m128i __builtin_ia32_psubw128 (__v8hi, __v8hi);
+__m128i __builtin_ia32_punpckhbw128 (__v16qi, __v16qi);
+__m128i __builtin_ia32_punpckhdq128 (__v4si, __v4si);
+__m128i __builtin_ia32_punpckhqdq128 (__v2di, __v2di);
+__m128i __builtin_ia32_punpckhwd128 (__v8hi, __v8hi);
+__m128i __builtin_ia32_punpcklbw128 (__v16qi, __v16qi);
+__m128i __builtin_ia32_punpckldq128 (__v4si, __v4si);
+__m128i __builtin_ia32_punpcklqdq128 (__v2di, __v2di);
+__m128i __builtin_ia32_punpcklwd128 (__v8hi, __v8hi);
+__m128i __builtin_ia32_pxor128 (__v2di, __v2di);
+__m128i __builtin_ia32_vec_set_v8hi (__v8hi, const int, const int);
+__m128d __builtin_ia32_loadupd (double const *);
+int __builtin_ia32_cvttsd2si (__v2df);
+double __builtin_ia32_vec_ext_v2df (__m128d, const int);
+int __builtin_ia32_vec_ext_v4si (__v4si, const int);
+__m128 __builtin_ia32_cvtsd2ss (__v4sf, __v2df);
+long long __builtin_ia32_vec_ext_v2di (__v2di, const int);
+unsigned short __builtin_ia32_vec_ext_v8hi (__v8hi, const int);
+long long __builtin_ia32_cvttsd2si64 (__v2df);
+__m128d __builtin_ia32_cvtsi642sd (__v2df, long long);
+__m128i __builtin_ia32_loadlv4si (__v2si *);
+__m128i __builtin_ia32_movqv4si (__v4si);
+void __builtin_ia32_storelv4si (__v2si *, __m128i);
+#endif
+
 /* Create a selector for use with the SHUFPD instruction.  */
 #define _MM_SHUFFLE2(fp1,fp0) \
  (((fp1) << 1) | (fp0))
